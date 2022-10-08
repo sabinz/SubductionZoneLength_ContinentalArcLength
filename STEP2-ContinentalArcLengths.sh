@@ -29,8 +29,8 @@ do
 	rm continental_arc_portion_${scenario}km.txt
 	rm continental_arc_length_${scenario}km.txt
 
-	age=0
-	max_age=250
+	age=110
+	max_age=110
 
 	while (( $age <= $max_age ))
 	do
