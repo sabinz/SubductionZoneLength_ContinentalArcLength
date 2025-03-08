@@ -75,8 +75,13 @@ do
 
 
 		# For plotting - isolate points that are intersecting continental crust
-		awk '{ if ( $1 == ">") print $0 ; else if ($5 == 1) print $0 }' ${scenario}km_feature_L_halfxprofiles.gmt | gmt select -Z0.9/1.1+c4 > ${scenario}km_feature_L_halfxprofiles_continent.gmt
-		awk '{ if ( $1 == ">") print $0 ; else if ($5 == 1) print $0 }' ${scenario}km_feature_R_halfxprofiles.gmt | gmt select -Z0.9/1.1+c4 > ${scenario}km_feature_R_halfxprofiles_continent.gmt
+		awk '{ if ( $1 == ">") print $0 ; else if ($5 == "1") print $0 }' ${scenario}km_feature_L_halfxprofiles.gmt | gmt select -Z0.9/1.1+c4 > ${scenario}km_feature_L_halfxprofiles_continent.gmt
+		awk '{ if ( $1 == ">") print $0 ; else if ($5 == "1") print $0 }' ${scenario}km_feature_R_halfxprofiles.gmt | gmt select -Z0.9/1.1+c4 > ${scenario}km_feature_R_halfxprofiles_continent.gmt
+
+		# Older version
+		# awk '{ if ( $1 == ">") print $0 ; else if ($5 == 1) print $0 }' ${scenario}km_feature_L_halfxprofiles.gmt | gmt select -Z0.9/1.1+c4 > ${scenario}km_feature_L_halfxprofiles_continent.gmt
+		# awk '{ if ( $1 == ">") print $0 ; else if ($5 == 1) print $0 }' ${scenario}km_feature_R_halfxprofiles.gmt | gmt select -Z0.9/1.1+c4 > ${scenario}km_feature_R_halfxprofiles_continent.gmt
+
 
 		# For plotting - isolate subduction zone points that interact with continental crust
 		awk '{ if ( $1 == ">") print $0  }' ${scenario}km_feature_L_halfxprofiles_continent.gmt | awk '{print $7}' | awk -F/ '{print $1, $2}'  > ${scenario}km_feature_L_halfxprofiles_SZcontinent.gmt
